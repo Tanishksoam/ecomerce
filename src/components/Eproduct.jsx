@@ -1,0 +1,80 @@
+import React from "react";
+import { useEffect, useState } from "react";
+import { useLoaderData, useLocation } from "react-router-dom";
+import { MdOutlineStar } from "react-icons/md";
+const Eproduct = () => {
+  const location = useLocation();
+  const [details, setDetails] = useState({});
+  useEffect(() => {
+    setDetails(location.state.item);
+  }, []);
+  return (
+    <div>
+      <div className=" max-w-screen-xl mx-auto my-10 flex gap-10">
+        <div className="w-2/5 relative">
+          <img
+            className="w-full object-cover h-[550px]"
+            src={details.image}
+            alt="product image"
+          />
+          <div className="absolute top-4 right-0 z-100">
+            {details.isNew && (
+              <p className=" bg-neutral-800 text-white py-1 px-6 font-semibold font-titleFont">
+                Sale
+              </p>
+            )}
+          </div>
+        </div>
+        <div className="w-3/5 flex flex-col gap-12 justify-center">
+          <div>
+            <h1 className="text-4xl font-semibold">{details.title}</h1>
+            <div className="flex gap-4 mt-4 items-center">
+              <p className=" text-gray-400 font-base line-through ">
+                ${details.oldPrice}
+              </p>
+              <p className=" text-2xl font-medium">${details.price}</p>
+            </div>
+          </div>
+          <div className="flex items-center gap-2 text-base">
+            <div className="flex">
+              <MdOutlineStar />
+              <MdOutlineStar />
+              <MdOutlineStar />
+              <MdOutlineStar />
+              <MdOutlineStar />
+            </div>
+            <p className="text-sm text-gray-500">(1 Customer Review)</p>
+          </div>
+          <p className="text-md text-gray-600 -mt-3">{details.description}</p>
+          <div className="flex gap-4">
+            <div className=" w-52 flex text-gray-400 justify-between items-center gap-4 border p-3">
+              <p className="text-sm">Quantity</p>
+              <div className="flex items-center gap-4 text-sm font-semibold">
+                <button className="border h-5 font-normal text-lg flex items-center justify-center px-2 hover:bg-gray-700 hover:text-white cursor-pointer duration-300 active:bg-black">
+                  -
+                </button>
+                <span>{1}</span>
+                <button className="border h-5 font-normal text-lg flex items-center justify-center px-2 hover:bg-gray-700 hover:text-white cursor-pointer duration-300 active:bg-black">
+                  +
+                </button>
+              </div>
+            </div>
+            <button className="bg-black text-white py-3 px-6 active:bg-gray-700">
+              {" "}
+              add to cart
+            </button>
+          </div>
+          <p className=" text-sm font-thin text-gray-500 gap-3">
+            Category:{" "}
+            <span className="capitalize text-lg">
+              {" "}
+              &nbsp;{details.category}
+            </span>
+          </p>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default Eproduct;
