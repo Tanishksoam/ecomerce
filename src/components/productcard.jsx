@@ -3,7 +3,7 @@ import { useState } from "react";
 import { BsArrowRight } from "react-icons/bs";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-// import { addToCart } from "../redux/bazarSlice";
+import { addToCart } from "../redux/bazarSlice";
 import bazarslice from "../redux/bazarSlice";
 const ProductCard = ({ product }) => {
   const dispatch = useDispatch();
@@ -22,6 +22,21 @@ const ProductCard = ({ product }) => {
       },
     });
   };
+
+  function onClickAddtoCart(){
+    bazarslice.dispatch(
+      addToCart({
+        _id: product._id,
+        title: product.title,
+        image: product.image,
+        price: product.price,
+        description: product.description,
+        quantity: 1,
+      })
+    )
+
+    console.error(addToCart);
+  }
   return (
     <div className="group relative">
       <div
@@ -49,18 +64,7 @@ const ProductCard = ({ product }) => {
               <p className=" font-semibold">${product.price}</p>
             </div>
             <p
-              onClick={() =>
-                bazarslice.dispatch(
-                  addToCart({
-                    _id: product._id,
-                    title: product.title,
-                    image: product.image,
-                    price: product.price,
-                    description: product.description,
-                    quantity: 1,
-                  })
-                )
-              }
+              onClick={onClickAddtoCart}
               className="absolute text-sm text-gray-500 hover:text-gray-900 z-20 w-[100px] flex items-center gap-1 top-0 transform -translate-x-32 group-hover:translate-x-0  transition-transform cursor-pointer duration-500 "
             >
               Add to Cart{" "}
