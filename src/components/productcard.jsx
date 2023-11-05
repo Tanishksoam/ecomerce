@@ -32,18 +32,6 @@ const ProductCard = ({ product }) => {
       //   quantity: 1,
       // })
 
-  const onClickAddtoCart = () => {
-    dispatch(
-      addToCart({
-        _id: product._id,
-        title: product.title,
-        image: product.image,
-        price: product.price,
-        description: product.description,
-        quantity: 1,
-      })
-    );
-  }
   return (
     <div className="group relative">
       <div
