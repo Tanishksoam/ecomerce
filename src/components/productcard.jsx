@@ -4,7 +4,6 @@ import { BsArrowRight } from "react-icons/bs";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { addToCart } from "../redux/bazarSlice";
-import bazarslice from "../redux/bazarSlice";
 const ProductCard = ({ product }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -23,8 +22,18 @@ const ProductCard = ({ product }) => {
     });
   };
 
-  function onClickAddtoCart(){
-    bazarslice.dispatch(
+  
+      // addToCart({
+      //   _id: product._id,
+      //   title: product.title,
+      //   image: product.image,
+      //   price: product.price,
+      //   description: product.description,
+      //   quantity: 1,
+      // })
+
+  const onClickAddtoCart = () => {
+    dispatch(
       addToCart({
         _id: product._id,
         title: product.title,
@@ -33,9 +42,7 @@ const ProductCard = ({ product }) => {
         description: product.description,
         quantity: 1,
       })
-    )
-
-    console.error(addToCart);
+    );
   }
   return (
     <div className="group relative">
