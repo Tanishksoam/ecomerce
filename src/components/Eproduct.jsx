@@ -102,7 +102,7 @@ const Eproduct = () => {
           </p>
         </div>
       </div>
-      <ToastContainer
+      {/* <ToastContainer
         position="top-left"
         autoClose={200}
         hideProgressBar={false}
@@ -113,7 +113,7 @@ const Eproduct = () => {
         draggable
         pauseOnHover
         theme="dark"
-      />
+      /> */}
     </div>
   );
 };
