@@ -4,6 +4,7 @@ import { BsArrowRight } from "react-icons/bs";
 import { useNavigate } from "react-router-dom";
 import { addToCart } from "../redux/bazarSlice";
 import { useDispatch } from "react-redux";
+import { ToastContainer, toast } from "react-toastify";
 const ProductCard = ({ product }) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -59,7 +60,7 @@ const ProductCard = ({ product }) => {
                     quantity: 1,
                     description: product.description,
                   })
-                )
+                ) & toast.success(`${product.title} Added to Cart`)
               }
               className="absolute text-sm text-gray-500 hover:text-gray-900 z-20 w-[100px] flex items-center gap-1 top-0 transform -translate-x-32 group-hover:translate-x-0  transition-transform cursor-pointer duration-500 "
             >
@@ -81,6 +82,18 @@ const ProductCard = ({ product }) => {
           )}
         </div>
       </div>
+      <ToastContainer
+        position="top-left"
+        autoClose={2000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="dark"
+      />
     </div>
   );
 };

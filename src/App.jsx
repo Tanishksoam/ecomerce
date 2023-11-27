@@ -10,6 +10,7 @@ import {
 } from "react-router-dom";
 import ProductData from "./api/Api";
 import Carts from "./pages/Carts";
+import Login from "./pages/Login";
 import Eproduct from "./components/Eproduct";
 
 const Layout = () => {
@@ -34,6 +35,10 @@ const Router = createBrowserRouter([
         element: <Eproduct />,
       },
       { path: "/cart", element: <Carts /> },
+      {
+        path: "/login",
+        element: <Login />,
+      },
     ],
   },
 ]);

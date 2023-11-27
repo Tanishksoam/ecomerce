@@ -3,7 +3,6 @@ import { logo, cart } from "../assets";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 
-
 const Header = () => {
   const productData = useSelector((state) => state.bazar.productData);
   console.log(productData);
@@ -17,9 +16,11 @@ const Header = () => {
         </Link>
         <div className="flex items-center gap-8 font-titleFont">
           <ul className="flex items-center gap-8 font-titleFont">
-            <li className="text-base text-black font-bold hover:text-orange-900 hover:underline underline-offset-2 decoration-[1px] cursor-pointer duration-300">
-              Home
-            </li>
+            <Link to="/">
+              <li className="text-base text-black font-bold hover:text-orange-900 hover:underline underline-offset-2 decoration-[1px] cursor-pointer duration-300">
+                Home
+              </li>
+            </Link>
             <li className="text-base text-black font-bold hover:text-orange-900 hover:underline underline-offset-2 decoration-[1px] cursor-pointer duration-300">
               Pages
             </li>
@@ -33,24 +34,27 @@ const Header = () => {
               Blog
             </li>
           </ul>
-          <div className="relative">
+          <Link to="/cart">
+            <div className="relative">
+              <img
+                className="w-8"
+                src="https://cdn-icons-png.flaticon.com/512/2832/2832499.png"
+                alt="cart"
+              />
+              <span className="absolute w-6 top-2 left-3 text-sm items-center justify-center font-semibold">
+                {productData.length}
+              </span>
+            </div>
+          </Link>
+          <Link to="/login">
             <img
-              className="w-8"
-              src="https://cdn-icons-png.flaticon.com/512/2832/2832499.png"
-              alt="cart"
+              src="https://cdn-icons-png.flaticon.com/512/1144/1144760.png"
+              className="w-8 h-8 rounded-full"
+              alt="profile"
             />
-            <span className="absolute w-6 top-2 left-3 text-sm items-center justify-center font-semibold">
-              {productData.length}
-            </span>
-          </div>
-          <img
-            src="https://cdn-icons-png.flaticon.com/512/1144/1144760.png"
-            className="w-8 h-8 rounded-full"
-            alt="profile"
-          />
+          </Link>
         </div>
       </div>
-      
     </div>
   );
 };

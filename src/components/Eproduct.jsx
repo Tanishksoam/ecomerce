@@ -4,7 +4,8 @@ import { useLoaderData, useLocation } from "react-router-dom";
 import { MdOutlineStar } from "react-icons/md";
 import { addToCart } from "../redux/bazarSlice";
 import { useDispatch } from "react-redux";
-// import { ToastContainer, toast } from "react-toastify/dist/components";
+
+import { ToastContainer, toast } from "react-toastify";
 const Eproduct = () => {
   const dispatch = useDispatch();
   const location = useLocation();
@@ -84,8 +85,8 @@ const Eproduct = () => {
                     price: details.price,
                     quantity: baseQuantity,
                     description: details.description,
-                  }) //& toast.success(`${details.title}Added to cart`)
-                )
+                  })
+                ) & toast.success(`${details.title} added to cart`)
               }
               className="bg-black text-white py-3 px-6 active:bg-gray-700"
             >
@@ -102,9 +103,9 @@ const Eproduct = () => {
           </p>
         </div>
       </div>
-      {/* <ToastContainer
+      <ToastContainer
         position="top-left"
-        autoClose={200}
+        autoClose={2000}
         hideProgressBar={false}
         newestOnTop={false}
         closeOnClick
@@ -113,7 +114,7 @@ const Eproduct = () => {
         draggable
         pauseOnHover
         theme="dark"
-      /> */}
+      />
     </div>
   );
 };
