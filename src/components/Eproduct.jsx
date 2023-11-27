@@ -2,9 +2,14 @@ import React from "react";
 import { useEffect, useState } from "react";
 import { useLoaderData, useLocation } from "react-router-dom";
 import { MdOutlineStar } from "react-icons/md";
+import { addToCart } from "../redux/bazarSlice";
+import { useDispatch } from "react-redux";
+// import { ToastContainer, toast } from "react-toastify/dist/components";
 const Eproduct = () => {
+  const dispatch = useDispatch();
   const location = useLocation();
   const [details, setDetails] = useState({});
+  let [baseQuantity, setBaseQuantity] = useState(1);
   useEffect(() => {
     setDetails(location.state.item);
   }, []);
@@ -50,16 +55,40 @@ const Eproduct = () => {
             <div className=" w-52 flex text-gray-400 justify-between items-center gap-4 border p-3">
               <p className="text-sm">Quantity</p>
               <div className="flex items-center gap-4 text-sm font-semibold">
-                <button className="border h-5 font-normal text-lg flex items-center justify-center px-2 hover:bg-gray-700 hover:text-white cursor-pointer duration-300 active:bg-black">
+                <button
+                  onClick={() =>
+                    setBaseQuantity(
+                      baseQuantity === 1 ? (baseQuantity = 1) : baseQuantity - 1
+                    )
+                  }
+                  className="border h-5 font-normal text-lg flex items-center justify-center px-2 hover:bg-gray-700 hover:text-white cursor-pointer duration-300 active:bg-black"
+                >
                   -
                 </button>
-                <span>{1}</span>
-                <button className="border h-5 font-normal text-lg flex items-center justify-center px-2 hover:bg-gray-700 hover:text-white cursor-pointer duration-300 active:bg-black">
+                <span>{baseQuantity}</span>
+                <button
+                  onClick={() => setBaseQuantity(baseQuantity + 1)}
+                  className="border h-5 font-normal text-lg flex items-center justify-center px-2 hover:bg-gray-700 hover:text-white cursor-pointer duration-300 active:bg-black"
+                >
                   +
                 </button>
               </div>
             </div>
-            <button className="bg-black text-white py-3 px-6 active:bg-gray-700">
+            <button
+              onClick={() =>
+                dispatch(
+                  addToCart({
+                    _id: details._id,
+                    title: details.title,
+                    image: details.image,
+                    price: details.price,
+                    quantity: baseQuantity,
+                    description: details.description,
+                  }) //& toast.success(`${details.title}Added to cart`)
+                )
+              }
+              className="bg-black text-white py-3 px-6 active:bg-gray-700"
+            >
               {" "}
               add to cart
             </button>
@@ -73,6 +102,18 @@ const Eproduct = () => {
           </p>
         </div>
       </div>
+      <ToastContainer
+        position="top-left"
+        autoClose={200}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="dark"
+      />
     </div>
   );
 };

@@ -2,13 +2,16 @@ import React from "react";
 //ximport { useState } from "react";
 import { BsArrowRight } from "react-icons/bs";
 import { useNavigate } from "react-router-dom";
+import { addToCart } from "../redux/bazarSlice";
+import { useDispatch } from "react-redux";
 const ProductCard = ({ product }) => {
   const navigate = useNavigate();
-
+  const dispatch = useDispatch();
   const _id = product.title;
   const idString = (_id) => {
     return String(_id).toLowerCase().split(" ").join("");
   };
+
   const rootid = idString(_id);
 
   const handleDetails = () => {
@@ -18,15 +21,6 @@ const ProductCard = ({ product }) => {
       },
     });
   };
-
-  // addToCart({
-  //   _id: product._id,
-  //   title: product.title,
-  //   image: product.image,
-  //   price: product.price,
-  //   description: product.description,
-  //   quantity: 1,
-  // })
 
   return (
     <div className="group relative">
@@ -54,7 +48,21 @@ const ProductCard = ({ product }) => {
               </p>
               <p className=" font-semibold">${product.price}</p>
             </div>
-            <p className="absolute text-sm text-gray-500 hover:text-gray-900 z-20 w-[100px] flex items-center gap-1 top-0 transform -translate-x-32 group-hover:translate-x-0  transition-transform cursor-pointer duration-500 ">
+            <p
+              onClick={() =>
+                dispatch(
+                  addToCart({
+                    _id: product._id,
+                    title: product.title,
+                    image: product.image,
+                    price: product.price,
+                    quantity: 1,
+                    description: product.description,
+                  })
+                )
+              }
+              className="absolute text-sm text-gray-500 hover:text-gray-900 z-20 w-[100px] flex items-center gap-1 top-0 transform -translate-x-32 group-hover:translate-x-0  transition-transform cursor-pointer duration-500 "
+            >
               Add to Cart{" "}
               <span>
                 <BsArrowRight />
