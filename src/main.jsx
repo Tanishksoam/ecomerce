@@ -7,9 +7,10 @@ import "./index.css";
 import { Provider } from "react-redux";
 import { persistor, store } from "./redux/store.jsx";
 import { PersistGate } from "redux-persist/integration/react";
+import { app } from "./firebase.config.js";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-  <Provider store={store}>
+  <Provider store={store} app={app}>
     <React.StrictMode>
       <PersistGate loading={"loasding"} persistor={persistor}>
         <App />

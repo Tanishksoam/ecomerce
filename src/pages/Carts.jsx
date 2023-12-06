@@ -11,6 +11,7 @@ const Carts = () => {
     let price = 0;
     productData.map((item) => {
       price += item.price * item.quantity;
+      price = Math.round(price, 2);
       return price;
     });
     setTotalAmt(price);
