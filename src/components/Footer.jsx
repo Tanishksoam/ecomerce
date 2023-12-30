@@ -12,7 +12,7 @@ import { BsPersonFill, BsPaypal } from "react-icons/bs";
 import { MdLocationOn } from "react-icons/md";
 const Footer = () => {
   return (
-    <div className="bg-black text-[#949494] py-20 font-titleFont">
+    <div className="bg-black text-[#949494] py-20 font-titleFont px-5">
       <div className="max-w-screen-xl mx-auto grid grid-cols-4">
         <div className="flex flex-col gap-3">
           <img className="w-32" src={logo2} alt="" />

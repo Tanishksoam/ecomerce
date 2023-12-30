@@ -5,9 +5,8 @@ import { useSelector } from "react-redux";
 
 const Header = () => {
   const productData = useSelector((state) => state.bazar.productData);
-  console.log(productData);
   return (
-    <div className="w-full h-20 bg-white border-b-[1px]  sticky top-0 z-50 ">
+    <div className="w-full h-20 bg-white border-b-[1px]  sticky top-0 z-50 px-5 ">
       <div className="max-w-screen-xl h-full mx-auto flex items-center justify-between">
         <Link to="/">
           <div>
@@ -37,11 +36,11 @@ const Header = () => {
           <Link to="/cart">
             <div className="relative">
               <img
-                className="w-8"
+                className="w-10"
                 src="https://cdn-icons-png.flaticon.com/512/2832/2832499.png"
                 alt="cart"
               />
-              <span className="absolute w-6 top-2 left-3 text-sm items-center justify-center font-semibold">
+              <span className="absolute w-6 top-4 left-4 text-sm items-center justify-center font-semibold">
                 {productData.length}
               </span>
             </div>
@@ -49,7 +48,7 @@ const Header = () => {
           <Link to="/login">
             <img
               src="https://cdn-icons-png.flaticon.com/512/1144/1144760.png"
-              className="w-8 h-8 rounded-full"
+              className="w-10 h-10 rounded-full"
               alt="profile"
             />
           </Link>
