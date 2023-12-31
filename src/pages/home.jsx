@@ -3,9 +3,11 @@ import { useLoaderData } from "react-router-dom";
 import Banner from "../components/banner";
 import Product from "../components/product";
 import Testing from "../components/testing";
+import Loading from "../components/Loading";
 
 const Home = () => {
   const [products, setProducts] = useState([]);
+
   const data = useLoaderData();
   useEffect(() => {
     setProducts(data.data);
