@@ -1,8 +1,9 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, configureStore } from "@reduxjs/toolkit";
 
 const initialState = {
   productData: [],
   UserInfo: null,
+  isLoading:true,
 };
 
 export const bazarSlice = createSlice({
@@ -53,7 +54,14 @@ export const bazarSlice = createSlice({
     removeUser: (state) => {
       state.UserInfo = null;
     },
+    removeLoader: (state) => {
+      console.log("loader removed in store");
+      state.isLoading = false;
+    },
   },
+});
+const store = configureStore({
+  reducer: bazarSlice.reducer,
 });
 
 export const {
@@ -64,5 +72,6 @@ export const {
   decrementQuantity,
   addUser,
   removeUser,
+  removeLoader,
 } = bazarSlice.actions;
 export default bazarSlice.reducer;

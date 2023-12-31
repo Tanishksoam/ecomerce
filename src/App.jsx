@@ -2,6 +2,7 @@ import "./App.css";
 import Footer from "./components/Footer";
 import Header from "./components/header";
 import Home from "./pages/home";
+import { useSelector } from "react-redux";
 import {
   createBrowserRouter,
   Outlet,
@@ -13,8 +14,10 @@ import Carts from "./pages/Carts";
 import Login from "./pages/Login";
 import { useState, useEffect } from "react";
 import Loading from "./components/Loading";
+import { ApiComp } from "./api/Api";
 
 import Eproduct from "./components/Eproduct";
+import Product from "./components/product";
 
 const Layout = () => {
   return (
@@ -47,17 +50,12 @@ const Router = createBrowserRouter([
 ]);
 
 function App() {
-  const [loiading, setLoiading] = useState(false);
-  useEffect(() => {
-    setLoiading(true);
-    setTimeout(() => {
-      setLoiading(false);
-    }, 5000);
-  }, []);
-
+  const loading = useSelector((state) => state.bazar.isLoading);
+  console.log("loading::",loading)
   return (
     <div className=" font-bodyFont">
-      {loiading ? (
+      <ApiComp />
+      {loading? (
         <div className=" w-full h-full mt-[45vh] ml-[45vw] flex flex-col gap-16">
           <p>Loading...</p>
           <Loading />
