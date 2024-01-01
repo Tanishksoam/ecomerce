@@ -1,12 +1,14 @@
 import React from "react";
 import { google, github } from "../assets";
 import { useDispatch } from "react-redux";
-// import {Auth} from "../firebase.config.js";
+import { addUser, removeUser } from "../redux/bazarSlice";
+import { ToastContainer, toast } from "react-toastify";
+// import { Auth } from "../firebase.config.js";
 import {
   getAuth,
   GoogleAuthProvider,
   signInWithPopup,
-  signInWithRedirect,
+  signOut,
 } from "firebase/auth";
 
 const Login = () => {
@@ -19,6 +21,7 @@ const Login = () => {
         const credential = GoogleAuthProvider.credentialFromResult(result);
         const token = credential.accessToken;
         const user = result.user;
+        console.log(user);
         dispatch(
           addUser({
             _id: user.uid,
@@ -29,8 +32,7 @@ const Login = () => {
         );
         setTimeout(() => {
           navigate("/");
-        }, 2000);
-        console.log(user);
+        }, 1500);
       })
       .catch((error) => {
         // Handle Errors here.
@@ -49,7 +51,7 @@ const Login = () => {
     signOut(auth)
       .then(() => {
         toast.success("Sign Out Successfully!");
-        console.log("Sign Out Successfully");
+        dispatch(removeUser());
       })
       .catch((error) => {
         console.log(error);
@@ -88,6 +90,18 @@ const Login = () => {
           </button>
         </div>
       </div>
+      <ToastContainer
+        position="top-left"
+        autoClose={2000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="dark"
+      />
     </div>
   );
 };

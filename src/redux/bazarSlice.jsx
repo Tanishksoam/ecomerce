@@ -3,7 +3,7 @@ import { createSlice, configureStore } from "@reduxjs/toolkit";
 const initialState = {
   productData: [],
   UserInfo: null,
-  isLoading:true,
+  isLoading: true,
 };
 
 export const bazarSlice = createSlice({
@@ -55,7 +55,6 @@ export const bazarSlice = createSlice({
       state.UserInfo = null;
     },
     removeLoader: (state) => {
-      console.log("loader removed in store");
       state.isLoading = false;
     },
   },

@@ -2,10 +2,24 @@ import React, { useEffect } from "react";
 import { useSelector } from "react-redux";
 import { banner } from "../assets";
 import CartItem from "../components/cartItem";
+import { toast } from "react-toastify";
+import { ToastContainer } from "react-toastify";
+import StripeCheckout from "react-stripe-checkout";
 
 const Carts = () => {
   const productData = useSelector((state) => state.bazar.productData);
+  const userInfo = useSelector((state) => state.bazar.UserInfo);
+
   const [totalAmt, setTotalAmt] = React.useState(0);
+  const [payNow, setPayNow] = React.useState(false);
+
+  const handleCheckOut = () => {
+    if (userInfo) {
+      setPayNow(true);
+    } else {
+      toast.error("Please Login First!");
+    }
+  };
   // console.log(productData);
   useEffect(() => {
     let price = 0;
@@ -45,11 +59,43 @@ const Carts = () => {
           <p className=" font-titleFont font-semibold flex justify-between mt-4">
             Total <span className="text-xl font-bold">${totalAmt}</span>
           </p>
-          <button className="w-full bg-[#000] text-white py-4 mt-4">
+          <button
+            onClick={handleCheckOut}
+            className="w-full bg-[#000] text-white py-4 mt-4"
+          >
             Proceed To Checkout
           </button>
+          {
+            payNow && (
+              <StripeCheckout
+                token={(token) => console.log(token)}
+                stripeKey="pk_live_51OTjgySI7D8yzk3R8f3lbmamgt9l8jZbYkNkWx7MQwKHaCTL1opndVh127ndaV04BlQrj99ZDuQvryQEmpcpBbpG00pcQ8HAbQ"
+                name="Bazar Online Shoping"
+                amount={totalAmt * 100}
+                label="Pay to bazar"
+                description={`Your total amount is ${totalAmt}`}
+                // token= {token}
+                email={userInfo.email}
+              />
+            )
+            // <Elements stripe={stripePromise}>
+            //   <CheckoutForm />
+            // </Elements>
+          }
         </div>
       </div>
+      <ToastContainer
+        position="top-left"
+        autoClose={2000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="dark"
+      />
     </div>
   );
 };

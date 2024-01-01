@@ -51,11 +51,10 @@ const Router = createBrowserRouter([
 
 function App() {
   const loading = useSelector((state) => state.bazar.isLoading);
-  console.log("loading::",loading)
   return (
     <div className=" font-bodyFont">
       <ApiComp />
-      {loading? (
+      {loading ? (
         <div className=" w-full h-full mt-[45vh] ml-[45vw] flex flex-col gap-16">
           <p>Loading...</p>
           <Loading />

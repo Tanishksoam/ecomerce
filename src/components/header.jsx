@@ -5,6 +5,8 @@ import { useSelector } from "react-redux";
 
 const Header = () => {
   const productData = useSelector((state) => state.bazar.productData);
+  const userInfo = useSelector((state) => state.bazar.userInfo);
+  console.log("userInfo::", userInfo);
   return (
     <div className="w-full h-20 bg-white border-b-[1px]  sticky top-0 z-50 px-5 ">
       <div className="max-w-screen-xl h-full mx-auto flex items-center justify-between">
@@ -52,6 +54,11 @@ const Header = () => {
               alt="profile"
             />
           </Link>
+          {userInfo && (
+            <p className=" text-base font-titleFont font-semibold">
+              {userInfo.name}
+            </p>
+          )}
         </div>
       </div>
     </div>
