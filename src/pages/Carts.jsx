@@ -5,6 +5,7 @@ import CartItem from "../components/cartItem";
 import { toast } from "react-toastify";
 import { ToastContainer } from "react-toastify";
 import StripeCheckout from "react-stripe-checkout";
+import axios from "axios";
 
 const Carts = () => {
   const productData = useSelector((state) => state.bazar.productData);
@@ -25,11 +26,18 @@ const Carts = () => {
     let price = 0;
     productData.map((item) => {
       price += item.price * item.quantity;
-      price = Math.round(price, 2);
+      price = Math.round(price * 100) / 100;
       return price;
     });
     setTotalAmt(price);
   }, [productData]);
+
+  const payment = async (token) => {
+    await axios.post("http://localhost:8000/pay", {
+      amount: totalAmt,
+      token: token,
+    });
+  };
   return (
     <div>
       <img
@@ -67,16 +75,18 @@ const Carts = () => {
           </button>
           {
             payNow && (
-              <StripeCheckout
-                token={(token) => console.log(token)}
-                stripeKey="pk_live_51OTjgySI7D8yzk3R8f3lbmamgt9l8jZbYkNkWx7MQwKHaCTL1opndVh127ndaV04BlQrj99ZDuQvryQEmpcpBbpG00pcQ8HAbQ"
-                name="Bazar Online Shoping"
-                amount={totalAmt * 100}
-                label="Pay to bazar"
-                description={`Your total amount is ${totalAmt}`}
-                // token= {token}
-                email={userInfo.email}
-              />
+              <div className=" w-full mt-6 flex items-center justify-center">
+                <StripeCheckout
+                  token={(token) => console.log(token)}
+                  stripeKey="pk_live_51OTjgySI7D8yzk3R8f3lbmamgt9l8jZbYkNkWx7MQwKHaCTL1opndVh127ndaV04BlQrj99ZDuQvryQEmpcpBbpG00pcQ8HAbQ"
+                  name="Bazar Online Shoping"
+                  amount={totalAmt * 100}
+                  label="Pay to bazar"
+                  description={`Your total amount is ${totalAmt}`}
+                  // token= {token}
+                  email={userInfo.email}
+                />
+              </div>
             )
             // <Elements stripe={stripePromise}>
             //   <CheckoutForm />

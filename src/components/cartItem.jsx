@@ -89,7 +89,9 @@ const CartItem = () => {
                     </button>
                   </div>
                 </div>
-                <h3 className="w-20">$ {Math.round(item.price * item.quantity,2)}</h3>
+                <h3 className="w-20">
+                  $ {Math.round(item.price * item.quantity * 100) / 100}
+                </h3>
               </div>
             </div>
           ))}
