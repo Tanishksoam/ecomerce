@@ -21,10 +21,10 @@ const CartItem = () => {
   const [quantAdded, setQuantAdded] = React.useState(1);
   console.log(productData);
   return (
-    <div className="w-2/3 pr-10 flex flex-col gap-6">
+    <div className="xs:w-full w-2/3 xs:pr-0 pr-10 flex flex-col gap-6">
       <div className=" w-full">
         <h2 className="text-2xl font-medium font-titleFont">Shopping Cart</h2>
-        <div>
+        <div className="xs:overflow-scroll">
           {productData.map((item) => (
             <div
               key={item._id}

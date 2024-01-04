@@ -13,20 +13,22 @@ import { MdLocationOn } from "react-icons/md";
 const Footer = () => {
   return (
     <div className="bg-black text-[#949494] py-20 font-titleFont px-5">
-      <div className="max-w-screen-xl mx-auto grid grid-cols-4">
+      <div className="max-w-screen-xl mx-auto grid xs:grid-cols-2 grid-cols-4">
         <div className="flex flex-col gap-3">
-          <img className="w-32" src={logo2} alt="" />
-          <p className="ml-4 text-white text-sm tracking-wide">© ReactDB.com</p>
-          <img className="w-56 ml-2" src={payment} alt="" />
-          <div className="flex gap-2 text-gray-500 text-lg">
-            <ImGithub className="ml-4 text-lg hover:text-white duration-300 cursor-pointer" />
-            <FaFacebookF className="ml-4 text-lg hover:text-white duration-300 cursor-pointer" />
-            <FaInstagram className="ml-4 text-lg hover:text-white duration-300 cursor-pointer" />
-            <FaTwitter className="ml-4 text-lg hover:text-white duration-300 cursor-pointer" />
-            <FaYoutube className="ml-4 text-lg hover:text-white duration-300 cursor-pointer" />
+          <img className="xs:w-28 w-32" src={logo2} alt="" />
+          <p className="ml-4 xs:text-xs text-white text-sm tracking-wide">
+            © ReactDB.com
+          </p>
+          <img className=" xs:w-32 w-56 ml-2" src={payment} alt="" />
+          <div className="flex xs:gap-0 gap-2 text-gray-500 xs:w-32">
+            <ImGithub className="xs:ml-2 ml-4 text-lg hover:text-white duration-300 cursor-pointer" />
+            <FaFacebookF className="xs:ml-2 ml-4 text-lg hover:text-white duration-300 cursor-pointer" />
+            <FaInstagram className="xs:ml-2 ml-4 text-lg hover:text-white duration-300 cursor-pointer" />
+            <FaTwitter className="xs:ml-2 ml-4 text-lg hover:text-white duration-300 cursor-pointer" />
+            <FaYoutube className="xs:ml-2 ml-4 text-lg hover:text-white duration-300 cursor-pointer" />
           </div>
         </div>
-        <div>
+        <div className="xs:hidden">
           <h2 className="text-2xl font-semibold text-white mb-4">Locate Us</h2>
           <div className=" text-base flex flex-col gap-3">
             <p>Tanishk Soam Developer</p>
@@ -68,7 +70,7 @@ const Footer = () => {
             </p>
           </div>
         </div>
-        <div className="flex flex-col justify-center">
+        <div className=" xs:hidden flex flex-col justify-center">
           <input
             type="text"
             className=" bg-transparent border px-4 py-2 text-sm "

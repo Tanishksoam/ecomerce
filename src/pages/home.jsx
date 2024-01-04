@@ -2,8 +2,6 @@ import React, { useState, useEffect } from "react";
 import { useLoaderData } from "react-router-dom";
 import Banner from "../components/banner";
 import Product from "../components/product";
-import Testing from "../components/testing";
-import Loading from "../components/Loading";
 
 const Home = () => {
   const [products, setProducts] = useState([]);
@@ -16,7 +14,6 @@ const Home = () => {
     <div>
       <Banner />
       <Product products={products} />
-      <Testing />
     </div>
   );
 };

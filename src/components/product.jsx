@@ -2,9 +2,8 @@ import React from "react";
 import ProductCard from "./productcard";
 
 const Product = ({ products }) => {
-  
   return (
-    <div className="py-10">
+    <div className="py-10 px-4">
       <div className="flex flex-col items-center gap-4">
         <h1 className="text-2xl bg-black text-white py-2 text-center w-80 ">
           Shopping Everyday
@@ -17,12 +16,10 @@ const Product = ({ products }) => {
           aliquid a laborum accusamus perferendis quod. Dolor, id! Rem.
         </p>
       </div>
-      <div className="max-w-screen-xl mx-auto py-10 grid grid-cols-4 gap-10">
+      <div className="max-w-screen-xl mx-auto py-10 grid xs:grid-cols-1  sm:grid-cols-2 md:grid-cols-4  gap-10">
         {products.map((items) => (
-            
           <ProductCard key={items._id} product={items} />
         ))}
-        ;
       </div>
     </div>
   );

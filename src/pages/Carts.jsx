@@ -45,9 +45,9 @@ const Carts = () => {
         src={banner}
         alt=""
       />
-      <div className=" max-w-screen-xl mx-auto py-20 flex">
+      <div className=" max-w-screen-xl mx-auto py-20 px-10 flex xs:flex-col">
         <CartItem />
-        <div className="w-1/3 bg-[#eeeeee] py-6 px-4">
+        <div className="xs:w-full w-1/3 bg-[#eeeeee] py-6 px-4">
           <div className=" flex flex-col gap-6 border-b-[2px] border-b-gray-400 pb-6">
             <h2 className="text-2xl font-medium">Cart Total</h2>
             <p className="flex item-center gap-4 text-base ">
