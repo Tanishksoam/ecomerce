@@ -106,8 +106,9 @@ const Header = () => {
               alt="profile"
             />
           </Link>
-          {userInfo != null && (
-            <p className=" text-base font-titleFont font-semibold">
+          
+          {userInfo != undefined && (
+            <p className=" w-24 h-12 text-base font-titleFont font-semibold bg-red-500 ">
               {userInfo.name}
             </p>
           )}

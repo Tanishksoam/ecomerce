@@ -50,6 +50,7 @@ export const bazarSlice = createSlice({
     // =======add user info to redux store=======
     addUser: (state, action) => {
       state.UserInfo = action.payload;
+      console.log("userinfo", state.UserInfo.name);
     },
     removeUser: (state) => {
       state.UserInfo = null;
