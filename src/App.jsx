@@ -18,6 +18,7 @@ import { ApiComp } from "./api/Api";
 
 import Eproduct from "./components/Eproduct";
 import Product from "./components/product";
+import Menu from "./components/menu";
 
 const Layout = () => {
   return (
@@ -44,6 +45,10 @@ const Router = createBrowserRouter([
       {
         path: "/login",
         element: <Login />,
+      },
+      {
+        path: "/menu",
+        element: <Menu />,
       },
     ],
   },

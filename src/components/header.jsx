@@ -16,9 +16,11 @@ const Header = () => {
             <img src={logo} alt="" className="w-28" />
           </div>
         </Link>
-        <div>
-          <RxHamburgerMenu className="w-10 h-10 text-black md:hidden" />
-        </div>
+        <Link to="/menu">
+          <div>
+            <RxHamburgerMenu className="w-10 h-10 text-black md:hidden" />
+          </div>
+        </Link>
         <div className=" flex items-center gap-8 font-titleFont sm:hidden">
           <ul className="flex items-center gap-8 font-titleFont">
             <Link to="/">
@@ -27,7 +29,7 @@ const Header = () => {
               </li>
             </Link>
             <li className="text-base text-black font-bold hover:text-orange-900 hover:underline underline-offset-2 decoration-[1px] cursor-pointer duration-300">
-              Pages
+              profile
             </li>
             <li className="text-base text-black font-bold hover:text-orange-900 hover:underline underline-offset-2 decoration-[1px] cursor-pointer duration-300">
               Shop
