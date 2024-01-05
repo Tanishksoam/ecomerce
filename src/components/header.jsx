@@ -7,6 +7,7 @@ import { RxHamburgerMenu } from "react-icons/rx";
 const Header = () => {
   const productData = useSelector((state) => state.bazar.productData);
   const userInfo = useSelector((state) => state.bazar.userInfo);
+  const [showMenu, setShowMenu] = React.useState(false);
   console.log("userInfo::", userInfo);
   return (
     <div className="w-full h-20 bg-white border-b-[1px]  sticky top-0 z-50 px-5 ">
@@ -16,11 +17,56 @@ const Header = () => {
             <img src={logo} alt="" className="w-28" />
           </div>
         </Link>
-        <Link to="/menu">
-          <div>
-            <RxHamburgerMenu className="w-10 h-10 text-black md:hidden" />
+        <div>
+          <RxHamburgerMenu
+            onClick={() => setShowMenu(true)}
+            className="w-10 h-10 text-black md:hidden"
+          />
+        </div>
+        {showMenu && (
+          <div className="dropdown-menu absolute w-screen h-screen left-0 top-16 bg-white px-2 py-4 rounded-lg text-center text-xl flex flex-col ">
+            <ul>
+              <li
+                onClick={() => setShowMenu(false)}
+                className="w-full py-2 hover:bg-gray-400 hover:text-white hover:shadow-md hover:shadow-gray-700  "
+              >
+                CLose Menu
+              </li>
+              <Link to="/">
+                <li
+                  onClick={() => setShowMenu(false)}
+                  className="w-full py-2 hover:bg-gray-400 hover:text-white hover:shadow-md hover:shadow-gray-700  "
+                >
+                  Home
+                </li>
+              </Link>
+              <Link to="/cart">
+                <li
+                  onClick={() => setShowMenu(false)}
+                  className="w-full py-2 hover:bg-gray-400 hover:text-white hover:shadow-md hover:shadow-gray-700  "
+                >
+                  Cart
+                </li>
+              </Link>
+              <Link to="/login">
+                <li
+                  onClick={() => setShowMenu(false)}
+                  className="w-full py-2 hover:bg-gray-400 hover:text-white hover:shadow-md hover:shadow-gray-700  "
+                >
+                  Login
+                </li>
+              </Link>
+              <Link to="/">
+                <li
+                  onClick={() => setShowMenu(false)}
+                  className="w-full py-2 hover:bg-gray-400 hover:text-white hover:shadow-md hover:shadow-gray-700  "
+                >
+                  Profile
+                </li>
+              </Link>
+            </ul>
           </div>
-        </Link>
+        )}
         <div className=" flex items-center gap-8 font-titleFont sm:hidden">
           <ul className="flex items-center gap-8 font-titleFont">
             <Link to="/">

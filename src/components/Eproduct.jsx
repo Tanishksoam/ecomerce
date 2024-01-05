@@ -16,8 +16,8 @@ const Eproduct = () => {
   }, []);
   return (
     <div>
-      <div className=" max-w-screen-xl mx-auto my-10 flex gap-10">
-        <div className="w-2/5 relative">
+      <div className=" max-w-screen-xl mx-auto my-10 flex xs:flex-col xs:px-2 gap-10">
+        <div className=" xs:w-full w-2/5  relative">
           <img
             className="w-full object-cover h-[550px]"
             src={details.image}
@@ -31,7 +31,7 @@ const Eproduct = () => {
             )}
           </div>
         </div>
-        <div className="w-3/5 flex flex-col gap-12 justify-center">
+        <div className=" xs:w-full w-3/5 xs:px-3 flex flex-col gap-12 justify-center">
           <div>
             <h1 className="text-4xl font-semibold">{details.title}</h1>
             <div className="flex gap-4 mt-4 items-center">

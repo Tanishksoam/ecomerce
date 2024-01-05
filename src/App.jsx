@@ -12,13 +12,11 @@ import {
 import ProductData from "./api/Api";
 import Carts from "./pages/Carts";
 import Login from "./pages/Login";
-import { useState, useEffect } from "react";
+
 import Loading from "./components/Loading";
 import { ApiComp } from "./api/Api";
 
 import Eproduct from "./components/Eproduct";
-import Product from "./components/product";
-import Menu from "./components/menu";
 
 const Layout = () => {
   return (
@@ -45,10 +43,6 @@ const Router = createBrowserRouter([
       {
         path: "/login",
         element: <Login />,
-      },
-      {
-        path: "/menu",
-        element: <Menu />,
       },
     ],
   },
