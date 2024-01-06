@@ -23,7 +23,7 @@ const Login = () => {
         const credential = GoogleAuthProvider.credentialFromResult(result);
         const token = credential.accessToken;
         const user = result.user;
-        console.log(user);
+        // console.log(user);
         dispatch(
           addUser({
             _id: user.uid,
@@ -33,7 +33,7 @@ const Login = () => {
           })
         );
         setTimeout(() => {
-          navigate("/cart");
+          navigate("/profile");
         }, 1000);
       })
       .catch((error) => {

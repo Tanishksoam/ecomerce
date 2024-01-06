@@ -17,6 +17,7 @@ import Loading from "./components/Loading";
 import { ApiComp } from "./api/Api";
 
 import Eproduct from "./components/Eproduct";
+import Profile from "./pages/profile";
 
 const Layout = () => {
   return (
@@ -43,6 +44,10 @@ const Router = createBrowserRouter([
       {
         path: "/login",
         element: <Login />,
+      },
+      {
+        path: "/profile",
+        element: <Profile />,
       },
     ],
   },

@@ -6,9 +6,8 @@ import { RxHamburgerMenu } from "react-icons/rx";
 
 const Header = () => {
   const productData = useSelector((state) => state.bazar.productData);
-  const userInfo = useSelector((state) => state.bazar.userInfo);
+  const UserInfo = useSelector((state) => state.bazar.UserInfo);
   const [showMenu, setShowMenu] = React.useState(false);
-  console.log("userInfo::", userInfo);
   return (
     <div className="w-full h-20 bg-white border-b-[1px]  sticky top-0 z-50 px-5 ">
       <div className="max-w-screen-xl h-full mx-auto flex items-center justify-between">
@@ -106,10 +105,10 @@ const Header = () => {
               alt="profile"
             />
           </Link>
-          
-          {userInfo != undefined && (
-            <p className=" w-24 h-12 text-base font-titleFont font-semibold bg-red-500 ">
-              {userInfo.name}
+
+          {UserInfo != undefined && (
+            <p className=" text-base font-titleFont font-semibold ">
+              {UserInfo.name}
             </p>
           )}
         </div>
