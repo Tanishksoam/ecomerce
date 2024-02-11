@@ -1,5 +1,5 @@
 import React from "react";
-import { logo2, payment } from "../assets";
+import { logo, payment } from "../assets";
 import { ImGithub } from "react-icons/im";
 import {
   FaFacebookF,
@@ -10,12 +10,18 @@ import {
 } from "react-icons/fa";
 import { BsPersonFill, BsPaypal } from "react-icons/bs";
 import { MdLocationOn } from "react-icons/md";
+import { Link } from "react-router-dom";
+
 const Footer = () => {
   return (
     <div className="bg-black text-[#949494] py-20 font-titleFont px-5">
-      <div className="max-w-screen-xl mx-auto grid xs:grid-cols-2 grid-cols-4">
+      <div className="max-w-screen-xl mx-auto grid xs:grid-cols-2 gap-4 grid-cols-4">
         <div className="flex flex-col gap-3">
-          <img className="xs:w-28 w-32" src={logo2} alt="" />
+          <Link to="/">
+            <div className="w-56 h-20 overflow-hidden">
+              <img src={logo} alt="" />
+            </div>
+          </Link>
           <p className="ml-4 xs:text-xs text-white text-sm tracking-wide">
             © ReactDB.com
           </p>

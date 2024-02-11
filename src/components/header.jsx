@@ -12,8 +12,8 @@ const Header = () => {
     <div className="w-full h-20 bg-white border-b-[1px]  sticky top-0 z-50 px-5 ">
       <div className="max-w-screen-xl h-full mx-auto flex items-center justify-between">
         <Link to="/">
-          <div>
-            <img src={logo} alt="" className="w-28" />
+          <div className="w-56 overflow-hidden">
+            <img src={logo} alt="" />
           </div>
         </Link>
         <div>
