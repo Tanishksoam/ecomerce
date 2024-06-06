@@ -55,7 +55,7 @@ const Header = () => {
                   Login
                 </li>
               </Link>
-              <Link to="/">
+              <Link to="/profile">
                 <li
                   onClick={() => setShowMenu(false)}
                   className="w-full py-2 hover:bg-gray-400 hover:text-white hover:shadow-md hover:shadow-gray-700  "
@@ -73,15 +73,17 @@ const Header = () => {
                 Home
               </li>
             </Link>
-            <li className="text-base text-black font-bold hover:text-orange-900 hover:underline underline-offset-2 decoration-[1px] cursor-pointer duration-300">
-              profile
-            </li>
-            <li className="text-base text-black font-bold hover:text-orange-900 hover:underline underline-offset-2 decoration-[1px] cursor-pointer duration-300">
-              Shop
-            </li>
-            <li className="text-base text-black font-bold hover:text-orange-900 hover:underline underline-offset-2 decoration-[1px] cursor-pointer duration-300">
-              Element
-            </li>
+            <Link to="/profile">
+              <li className="text-base text-black font-bold hover:text-orange-900 hover:underline underline-offset-2 decoration-[1px] cursor-pointer duration-300">
+                profile
+              </li>
+            </Link>
+            <Link to="#shop">
+              <li className="text-base text-black font-bold hover:text-orange-900 hover:underline underline-offset-2 decoration-[1px] cursor-pointer duration-300">
+                Shop
+              </li>
+            </Link>
+
             <li className="text-base text-black font-bold hover:text-orange-900 hover:underline underline-offset-2 decoration-[1px] cursor-pointer duration-300">
               Blog
             </li>
@@ -107,9 +109,11 @@ const Header = () => {
           </Link>
 
           {UserInfo != undefined && (
-            <p className=" text-base font-titleFont font-semibold ">
-              {UserInfo.name}
-            </p>
+            <Link to="/profile">
+              <p className=" text-base font-titleFont font-semibold ">
+                {UserInfo.name}
+              </p>
+            </Link>
           )}
         </div>
       </div>

@@ -5,7 +5,7 @@ const Product = ({ products }) => {
   return (
     <div className="py-10 px-4">
       <div className="flex flex-col items-center gap-4">
-        <h1 className="text-2xl bg-black text-white py-2 text-center w-80 ">
+        <h1 id="shop" className="text-2xl bg-black text-white py-2 text-center w-80 ">
           Shopping Everyday
         </h1>
         <span className="w-20 h-[3px] bg-black"></span>
