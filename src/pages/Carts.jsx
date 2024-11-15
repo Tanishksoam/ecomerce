@@ -21,7 +21,6 @@ const Carts = () => {
       toast.error("Please Login First!");
     }
   };
-  // console.log(productData);
   useEffect(() => {
     let price = 0;
     productData.map((item) => {
